@@ -26,6 +26,12 @@ Then /^I should have (\d+) category$/ do |num|
   Category.all.count == num.to_i
 end
 
+Given /^I have (\d+) category$/ do |num|
+  num.to_i.times do
+    Category.create(name:"Test #{num}")
+  end
+end
+
 require 'uri'
 require 'cgi'
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
