@@ -25,3 +25,10 @@ Feature: Manage Categories
     Then I should see "Category was successfully saved."
     And I should see "Another Test"
     And I should have 1 category
+
+  Scenario: Unsuccessfully add a category
+    Given there are no categories
+    When I follow "Categories"
+    And I press "Save"
+    Then I should see "1 error prohibited this category from being saved"
+    And I should have 0 category
