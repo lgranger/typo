@@ -32,6 +32,26 @@ Given /^I have (\d+) category$/ do |num|
   end
 end
 
+Given /^I have (\d+) articles published$/ do |num|
+  num.to_i.times do
+    Article.create!({:type => "Article",
+                     :title => "Foobar #{num}",
+                     :author => "Test User",
+                     :body => "Lorem Ipsum #{num}",
+                     :extended => nil,
+                     :excerpt => nil,
+                     :user_id => 1,
+                     :published => true,
+                     :allow_pings => nil,
+                     :allow_comments => nil,
+                     :published_at => nil,
+                     :state => "published",
+                     :parent_id => nil,
+                     :settings => {},
+                     :post_type => "read"})
+  end
+end
+
 require 'uri'
 require 'cgi'
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
